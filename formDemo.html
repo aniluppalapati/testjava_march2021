@@ -1,0 +1,161 @@
+<html>
+<head>
+<script>
+    function validatecheckboxes(){
+	    var hbs=document.getElementsByName("hobbies");
+		var cnt=0;
+		var erm=document.getElementById("errhobbies");
+		for(var i=0;i<hbs.length;i++){
+		   if(hbs[i].checked===true){
+		        cnt++;
+				if(cnt>=2){
+				    erm.innerHTML="";
+				    return true;
+				}
+		   }
+		}
+		erm.innerHTML="please select minimum 2 hobbies";
+	    return false; 
+	}
+ 
+    function validatepass(){
+	   var pass=document.getElementById("pass").value;  //retrieve the value of textbox
+	   var cpass=document.getElementById("cpass").value;
+	   var errm=document.getElementById("errpass");
+	   if(pass===cpass){
+	      errm.innerHTML="";
+	      return true;
+	   }
+	   errm.innerHTML="password and confirm password not matching";
+	   return false;
+	}
+	function validategender(){
+	   var gender=document.getElementsByName("gender");
+	   var errm=document.getElementById("errgender");
+	   for(var i=0;i<gender.length;i++){
+	       if(gender[i].checked==true){
+		      errm.innerHTML="";
+		      return true;
+		   }
+	   }
+	   errm.innerHTML="pls select gender";
+	    return false;
+		   
+	}
+    function validateDegree(){
+	     var degree=document.getElementsByName("degree");
+	   var errm=document.getElementById("errdegree");
+	   for(var i=0;i<degree.length;i++){
+	       if(degree[i].checked==true){
+		      errm.innerHTML="";
+		      return true;
+		   }
+	   }
+	   errm.innerHTML="pls select degree";
+	    return false;
+	
+	
+	}
+    function validateData(){
+	   var flag1=validatepass();
+	   var flag2=validatecheckboxes();
+	   var flag3=validategender();
+	  var flag4=validateDegree();
+	   if((flag1===true) && (flag2===true) && (flag3===true)&&(flag4==true)){
+	      return true;
+	   }
+	   return false;
+	}
+</script>
+</head>
+<body>
+<form action="page2.html" method="post" onsubmit="return validateData()">
+<table>
+
+  <tr><th> Name:</th>
+      <td><input type="text" name="nm" id="nm" placeholder="Enter your name" autofocus required/></td>
+	  <td></td>
+  </tr>
+  <tr>
+     <th>Address :</th>
+	 <td> <textarea name="address" id="address" rows="6" cols="40"></textarea></td>
+     <td></td>
+  </tr>
+  <tr><th> uName:</th>
+      <td><input type="text" name="unm" id="unm" placeholder="Enter your name" minlength="3" maxlength="8" required/></td>
+      <td></td> 
+ </tr>
+  <tr><th> password:</th>
+      <td><input type="password" name="pass" id="pass" placeholder="Enter password" required/></td>
+      <td></td>
+  </tr>
+  <tr><th> Confirm password:</th>
+      <td><input type="password" name="cpass" id="cpass" placeholder="re Enter password" required/></td> 
+      <td id="errpass">    </td>
+      
+ </tr>
+   <tr><th> Mobile number:</th>
+      <td><input type="text" name="mob" id="mob" pattern="9[0-9]{9}" placeholder="re Enter password"  required/></td>
+      <td></td> 
+  </tr>
+   <tr>
+      <th>Age :</th>
+	  <td> <input type="number" name="age" id="age" min="18" max="60"/></td>
+      <td></td>
+   </tr>
+   <tr>
+      <th>Booking Date :</th>
+	  <td> <input type="date" name="bd" id="bd" min="2021-02-16" max="2021-03-16"/></td>
+      <td></td>
+   </tr>
+   <tr>
+      <th>Gender</th>
+	  <td><input type="radio" name="gender" id="female" value="f"><label for="female">Female</label>
+          <input type="radio" name="gender" id="male" value="m"><label for="male">Male</label>
+	  </td>
+      <td id="errgender"></td>
+   </tr>
+    <tr>
+      <th>Degree</th>
+	  <td><input type="radio" name="degree" id="btech" value="btech"><label for="btech">B tech</label><br>
+          <input type="radio" name="degree" id="be" value="be"><label for="be">BE<label><br>
+		  <input type="radio" name="degree" id="msc" value="msc"><label for="msc">MSc. Computer</label>
+	  </td>
+	  <td id="errdegree"></td>
+   </tr>
+   <tr>
+      <th>hobbies</th>
+	  <td><input type="checkbox" name="hobbies" id="reading" value="reading" checked><label for="reading">Reading</label>
+          <input type="checkbox" name="hobbies" id="biking" value="biking"><label for="biking">Biking</label>
+		  <input type="checkbox" name="hobbies" id="eating" value="eating"><label for="eating">Eating</label>
+		  <input type="checkbox" name="hobbies" id="sleeping" value="sleeping"><label for="sleeping">Sleeping</label>
+	  </td>
+	  <td id="errhobbies"></td>
+   </tr>
+   <tr>
+     <th>City : </th>
+	 <td>
+	    <select name="city" id="city" size="4">
+		    <option value="pune">Pune</option>
+			<option value="Nashik" selected>Nashik</option>
+			<option value="Mumbai">Mumbai</option>
+			<option value="Nagpur">Nagpur</option>
+		</select>
+	 </td>
+	 <td></td>
+   </tr>
+   <tr>
+       <td></td>
+	   <td>
+	      <input type="submit" name="btn" value="Click me">&nbsp;&nbsp;&nbsp;
+          <input type="reset" name="btn" value="clear">
+	   </td>
+	   <td></td>
+   </tr>
+   
+    
+   <!--<button type="submit" name="btn">Click me</button>-->
+   </table>
+</form>
+</body>
+</html>
